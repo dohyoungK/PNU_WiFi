@@ -1,0 +1,49 @@
+1. path loss 모델 살펴보기, sensitivity 넣고 거리 d 찾기
+2. ap마다 범위찾아서 범위내로 sta 랜덤으로 뿌리기
+3. 60초 시뮬레이션 돌려서
+4. throughput(이미 존재), pdr(packet delivery ratio), PER(packet error ratio), channel utilization
+
+
+// mac폴더 @hEDCAMAC폴더 handleEventsWaitForRx에서 전송 내역 print문 설정
+//TxPower는 15dBm으로 default값 설정되어있음.
+
+//미리 본문에 선언 후 sta 랜덤 위치 뿌릴 때 먼저 사용, 범위 변경은 hCreateWLANNodes.m에서 변경.
+//hWLANNode.m 에서 receiverRange(m 단위)에 따라 판별
+//hWLANNode.m 에서 distance구하는 함수 사용해 거리 구해서 sta설정할 때 사용, 
+한 층을 범위로 놓고 랜덤으로 위치 찍은 뒤 range 안이면 확정, 아니면 다시...
+
+
+*데이터 구성
+521data = 320retry, 32fail, 169suc 구성, 
+AP의 macTxSuc = 전송된 STA의 macDataRx의 합 
+
+(data - suc) / data= packet loss
+suc / data = packet delivery
+fail / data = packet error
+
+
+Data = Success + Fail + Retry
+
+Throughput = (DataBytes * 8) / CurrentTime (MacTxByte*8 => AppRxBytes*8 로 변경)
+Packet Loss Ratio = (Data - Success) / Data
+Packet Delivery Ratio = Success / Data
+Packet Error Ratio = Fail / Data
+Packet Latency = CurrentTime -  PacketToAppTime
+
+(statlogger에서 위 4가지, hWLANNode.m에서 latency 찾음) 
+
+
+
+
+*hCreateWLANNode에서 hChannelToFrequency에 각 대역당 채널 범위
+2.4GHz = 1~13
+5GHz = 1~200
+
+
+나중에 개선순서
+
+ap sta 연결 변경
+power 컨트롤
+채널 컨트롤
+
+

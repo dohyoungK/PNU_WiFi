@@ -1,0 +1,38 @@
+hTGaxResidentialPathLoss.m에서
+
+% Path loss
+            pl = wlanresidentialpl(pm,d,tx.TransmitterFrequency);
+
+            % Penetration loss(투과 손실: 신호가 벽이나 바닥투과 하면서 생기는 loss)
+            pnl = wlanresidentialpnl(pm,tx,rxs);
+            
+            % Large-scale shadow fading(신호가 장애물로 인해 반사되거나 산란되면서 생기는 loss)
+            sf = pm.ShadowSigma*randn(size(pl));
+            
+            pl = pl + pnl + sf;
+
+최종 path loss = path loss + penetration loss + shadow fading 이다.
+
+link budget
+Loss(dB) = Tx power (전송파워 dBm) + Tx gain(이득 dB) - sensitivity(수신 감도 신호 dBm)
+전송 파워가 15일때 로스로 인해 파워를 잃어서 최소 
+
+시그널 파워가 16이므로 path loss가 98일 때 16 - 98 하면 -82 threshold. 
+
+16dBm + 82dBm = 98dBm 
+
+98 = 40.05 + 20*log10(min(R,5)) + 35*(R>5).*log10(R/5)
+57.95 =  13.98 + 35*log10(R/5)
+43.97 = 35*log10(R/5)
+1.26 = log10(R/5)
+R = 18.1 * 5 = 90.5m // path loss로 이 모델만 고려했을 때
+
+이 프로그램은 pl = pl + pnl + sf 이므로 거리 범위는 더 줄어듬
+=> 대강 계산하면 24m
+
+
+
+
+
+
+

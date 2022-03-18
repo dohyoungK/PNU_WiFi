@@ -1,0 +1,15 @@
+hCreateWLANNodes에서 
+app = networkTrafficOnOff() 이 부분 변경하면 바뀔 것 같음.
+
+hApplication에서 app 출력해서 확인중
+
+그리고 현재 on off 트래픽 패턴의 속성을 설정하기 위해서
+traffic config에 
+
+
+on off 트래픽 패턴 :
+FTP 트래픽 패턴 : 
+VoIP 트래픽 패턴 : 음성 정보 전달
+Video 트래픽 패턴
+
+

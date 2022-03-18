@@ -1,0 +1,43 @@
+%   NODECONFIGS is specified as a structure containing the following fields
+%
+%   NodePosition             - Position of node as a 3D vector
+%   BandAndChannel           - 밴드와 채널
+%   Frequency                - 동작 주파수
+%   Bandwidth                - 한 채널의 대역폭
+%   TxFormat                 - Physical layer frame format(nonHT: non high throughput, HE_SU: high efficiency single user)
+%   MPDUAggregation          - Enable aggregation
+%   DisableAck               - Disable acknowledgments
+%   NumTxChains              - 시공간 스트림(데이터 통로)의 개수 (송수신 기술: SISO는 특정시간에 1개, MIMO(멀티 인풋, 멀티 아웃풋)는 복수 사용)
+%   MaxSubframes             - Maximum number of A-MPDU subframes
+%   TxMCS                    - Modulation and coding scheme
+%   RTSThreshold             - Threshold for frame length above which RTS is transmitted
+%   MaxShortRetries          - Maximum retries for short frames
+%   MaxLongRetries           - Maximum retries for long frames
+%   Use6MbpsForControlFrames - Force 6 Mbps for control frames
+%   BasicRates               - Non-HT rates supported by the network
+%   EnableSROperation        - Enable spatial reuse operation
+%   BSSColor                 - Basic service set (BSS) color identifier
+%   OBSSPDThreshold          - OBSS PD threshold
+%   TxPower                  - Transmission power in dBm
+%   TxGain                   - Transmission gain in dB
+%   EDThreshold              - Energy detection threshold in dBm
+%   RxGain                   - Receiver gain in dB
+%   RxNoiseFigure            - Receiver noise figure
+%   PHYAbstractionType       - PHY(physical layer 물리계층) abstraction type
+%   ReceiverRange            - Packet reception range of the receiving node
+%   FreeSpacePathloss        - Flag to enable free space pathloss
+%   DisableRTS               - Disable RTS transmission
+%   CWMin                    - Minimum range of contention window for four ACs
+%   CWMax                    - Maximum range of contention window for four ACs
+%   AIFSSlots                - Arbitrary interframe slot values for four ACs
+%   PowerControl             - 전력 제어 방식
+%   RateControl              - 데이터 전송 속도 제어 방식(arf: 자동 전송률 제어, fixed: 고정)
+%
+%   TRAFFICCONFIGS is a structure with the following fields:
+%
+%   SourceNode               - ID of the node generating the traffic
+%   DestinationNode          - ID of the destination node for the traffic
+%   PacketSize               - Size of the application packet in bytes
+%   DataRateKbps             - Rate of application packet generation
+%   AccessCategory           - Access category of the generated traffic
+%
